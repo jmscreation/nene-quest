@@ -9,7 +9,7 @@ LifeBar::LifeBar() {}
 
 LifeBar::LifeBar(short int max, Vector2f position, PlayerID id) {
     this->max = max;
-    this->value = this->max;
+    this->value = this->max/2;
 
     this->background = RectangleShape(Vector2f(this->LIFEBAR_WIDTH, 35));
     this->background.setFillColor(Color::White);
@@ -38,6 +38,9 @@ LifeBar::LifeBar(short int max, Vector2f position, PlayerID id) {
     this->knight_head.setOrigin(this->background.getSize().x / 2 + 50,
                                 this->background.getSize().y + 30);
     this->knight_head.setPosition(position);
+
+    updateBar();
+    
 }
 
 void LifeBar::updateBar() {

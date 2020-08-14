@@ -21,6 +21,8 @@ class World {
     static std::vector<Entity *> getCollidingEntities(Entity *entity);
     static std::vector<Entity *> getCollidingEntitiesOnZAxis(Entity *entity);
     static void addEntity(Entity *entity, bool isPlayer = false);
+  static void addHpEntity(Entity *entity);
+
     static void clearEntities();
     static void updateEntities();
     static void setElapsedTime(float time);
@@ -36,6 +38,10 @@ class World {
     static void managePlayerCollidingWithBonus(Player *player, Bonus *bonus);
     static void managePlayerCollidingWithEnemy(Player *player, Enemy *enemy);
 
+  // added
+  static void checkCollision(float elapsedTime, Vector2u windowSize);
+
+  
    private:
     static constexpr float SCROLL_SPEED = 30;
     static constexpr float SCROLL_DAMAGE =
@@ -44,6 +50,7 @@ class World {
 
     static std::vector<Entity *> entities;
     static std::vector<Player *> players;
+    static std::vector<BonusHp *> bonuses_hp;
     static float elapsedTime;
     static bool sortUsingFirstZHitbox(Entity *a, Entity *b);
 };
