@@ -19,6 +19,14 @@ std::vector<Entity *> World::getNearEntities(sf::Vector2f position,
     return result;
 }
 
+void World::clearEntities() {
+    for (auto e : entities) {
+        delete e;
+    }
+    entities.clear();
+    players.clear();
+}
+
 std::vector<Entity *> World::getCollidingEntities(Entity *entity) {
     std::vector<Entity *> result;
     for (auto e : entities)

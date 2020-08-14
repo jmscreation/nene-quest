@@ -105,7 +105,6 @@ int Game::run(RenderWindow& app) {
 
     // Load Level
     this->parser->parseFile("level0.nnq");
-    std::cout << "Test1";
     // Testing objects////////////
     bridge = new BridgePit(300, app.getSize().y - background.getSkyHeight(),
                            app.getSize().y);
@@ -126,7 +125,6 @@ int Game::run(RenderWindow& app) {
 
     // Arrow arrow = Arrow(Vector2f(100, 700), 700);
     World::addEntity(new BreakableObject(Barrel, Vector2f(700, 430)));
-    std::cout << "Test2";
     /////////////////////////////
 
     Clock clock;
@@ -215,22 +213,15 @@ void Game::manageMetaInputs(sf::Event e, Keyboard::Key toggleDebug) {
     }
 }
 
-//Collision detection
-//TODO: Move this somewhere else (World class)
-//void Game::checkCollision(float elapsedTime, Vector2u windowSize){
 void Game::cleanScreen() {
-  for (auto e : World::getEntities()) {
-    delete e;
-  }
-  // no need to delete elements of the following vectors as they are
-  // membre of World::getEntities()
-  /* this->players.clear();
-  this->bonuses_hp.clear();
-  this->item_weapons.clear();
-  this->breakable_objects.clear();
-  World::getEntities().clear(); */
+    // no need to delete elements of the following vectors as they are
+    // membre of World::getEntities()
+    /*this->players.clear();
+    this->bonuses_hp.clear();
+    this->item_weapons.clear();
+    this->breakable_objects.clear();*/
+    World::clearEntities();
 }
-
 
 // Collision detection
 // TODO: Move this somewhere else (World class)
