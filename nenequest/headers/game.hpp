@@ -56,8 +56,6 @@ class Game : public Screen {
     BreakableObject *getCollidingObject(Player *p);
 
     // std::vector<Enemy*> enemies
-
-    std::vector<ItemWeapon *> item_weapons;
     std::vector<BreakableObject *> breakable_objects;
     BridgePit *bridge;
 

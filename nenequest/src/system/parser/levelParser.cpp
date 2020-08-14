@@ -22,6 +22,7 @@ void LevelParser::initialize() {
 void LevelParser::parseFile(std::string filename) {
     std::string line;
     std::ifstream file(this->levelFilePath + "/" + filename);
+    std::vector<ParserCommand *> commands;
     if (file.is_open()) {
         while (std::getline(file, line)) {
             // get time
@@ -67,13 +68,13 @@ void LevelParser::parseFile(std::string filename) {
                 c->addArgument(k, v);
             }
 
-            this->commands.push_back(c);
+            commands.push_back(c);
         }
 
         file.close();
     }
 
-    for (auto c : this->commands) {
+    for (auto c : commands) {
         ParserFunction *f = this->functions.at(0);
         decltype(this->functions)::size_type i = 0;
         while (i < this->functions.size() && !f->isCorrect(c->getName()))
@@ -82,7 +83,7 @@ void LevelParser::parseFile(std::string filename) {
         c->setFunction(f);
     }
 
-    manager->setLevelCommands(this->commands);
+    manager->setLevelCommands(commands);
 }
 
 void LevelParser::setLevelFilesPath(std::string path) {

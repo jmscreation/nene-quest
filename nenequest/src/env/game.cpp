@@ -37,7 +37,6 @@ int Game::run(RenderWindow& app) {
     Event event;
     Background background = Background(app.getSize());
     this->manager->setBackground(&background);
-    std::cout << "??";
     // Load settings
     this->configParser->parseFile("config.ini");
     // Bind keys
@@ -125,8 +124,9 @@ int Game::run(RenderWindow& app) {
     */
     // Arrow arrow = Arrow(Vector2f(100, 700), 700);
     BonusHp *onigiri = new BonusHp(BONUS_ONIGIRI, Vector2f(900, 900));
+    ItemWeapon *sword = new ItemWeapon(Sword, Vector2f(800, 600));
+    World::addEntity(sword);
     World::addEntity(onigiri);
-    std::cout << "Test2";
     /////////////////////////////
 
     Clock clock;
@@ -162,7 +162,6 @@ int Game::run(RenderWindow& app) {
         this->manager->update();
         background.update();
         // arrow.update(elapsedTime);
-	//World::checkCollision(elapsedTime, app.getSize());
         app.clear(Color::White);
         app.draw(background);
         // app.draw(*bridge);
@@ -257,7 +256,6 @@ bool Game::cmp(Entity *a, Entity *d) {
 void Game::addInstance(Entity *e) { World::addEntity(e); }
 
 void Game::addPlayerInstance(Player *player) {
-    // this->players.push_back(player);
     World::addEntity(player, true);
 }
 

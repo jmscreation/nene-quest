@@ -17,7 +17,6 @@ class LevelParser {
     std::vector<ParserFunction *> functions;
     LevelManager *manager;
     std::string levelFilePath;
-    std::vector<ParserCommand *> commands;
 
    public:
     LevelParser();
