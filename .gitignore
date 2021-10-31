@@ -456,3 +456,8 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/c++,cmake,linux,windows,codeblocks,visualstudio,visualstudiocode
+
+
+
+
+SFML/
