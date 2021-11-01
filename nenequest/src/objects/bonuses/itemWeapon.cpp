@@ -10,22 +10,31 @@ ItemWeapon::ItemWeapon(WeaponType type, Vector2f position) {
 
     texture.loadFromFile(getWeaponPath(type));
     sprite.setTexture(texture);
-
-    sprite.setPosition(position);
-
     RectangleShape *hitbox = new RectangleShape();
     hitbox->setFillColor(sf::Color(255, 0, 0, 128));
     hitboxes.push_back(hitbox);
+
+    sprite.setPosition(position);
+
+    if (type == WeaponType::Bow) {
+        this->sprite.setTextureRect(IntRect(0, 0, this->texture.getSize().x,
+                                            this->texture.getSize().y / 2));
+    } else {
+        this->sprite.setTextureRect(IntRect(0, 0, this->texture.getSize().x,
+                                            this->texture.getSize().y));
+    }
+
     updateAutoHitboxSize();
     updateAutoHitboxPosition();
 
     RectangleShape *zhitbox = new RectangleShape(
         Vector2f(hitboxes.at(0)->getSize().x,
                  hitboxes.at(0)->getSize().y * hitbox_zHitbox_yRatio));
+    
+    zhitbox->setFillColor(sf::Color(0, 0, 255, 128));
     zhitbox->setOrigin(
         0, -hitboxes.at(0)->getSize().y * (1 - hitbox_zHitbox_yRatio));
     zhitbox->setPosition(position);
-    zhitbox->setFillColor(sf::Color(0, 0, 255, 128));
     zHitboxes.push_back(zhitbox);
 }
 
@@ -41,6 +50,14 @@ void ItemWeapon::setWeaponType(WeaponType type) {
     texture.loadFromFile(getWeaponPath(type));
     this->sprite = Sprite(texture);
     sprite.setPosition(this->getPosition());
+
+    if (type == WeaponType::Bow) {
+        this->sprite.setTextureRect(IntRect(0, 0, this->texture.getSize().x,
+                                            this->texture.getSize().y / 2));
+    } else {
+        this->sprite.setTextureRect(IntRect(0, 0, this->texture.getSize().x,
+                                            this->texture.getSize().y));
+    }
 
     updateAutoHitboxSize();
     updateAutoHitboxPosition();

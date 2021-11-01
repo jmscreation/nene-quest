@@ -121,12 +121,14 @@ int Game::run(RenderWindow& app) {
     BreakableObject *barrel = new BreakableObject(Chest, Vector2f(520, 630));
     World::addEntity(barrel);
     World::addEntity(new BreakableObject(Barrel, Vector2f(700, 430)));
-    */
+    
     // Arrow arrow = Arrow(Vector2f(100, 700), 700);
+    
     BonusHp *onigiri = new BonusHp(BONUS_ONIGIRI, Vector2f(900, 900));
     ItemWeapon *sword = new ItemWeapon(Sword, Vector2f(800, 600));
     World::addEntity(sword);
     World::addEntity(onigiri);
+    */
     /////////////////////////////
 
     Clock clock;
@@ -142,12 +144,12 @@ int Game::run(RenderWindow& app) {
 	    }
             manageInputs(event, PlayerID::PLAYER1, kbPlayerOneUp,
                          kbPlayerOneDown, kbPlayerOneLeft, kbPlayerOneRight,
-                         kbPlayerOneJump);
+                         kbPlayerOneAttack);
 
             if (World::getPlayers().size() == 2)
                 manageInputs(event, PlayerID::PLAYER2, kbPlayerTwoUp,
                              kbPlayerTwoDown, kbPlayerTwoLeft, kbPlayerTwoRight,
-                             kbPlayerTwoJump);
+                             kbPlayerTwoAttack);
 
             manageMetaInputs(event, kbDebugMode);
         }

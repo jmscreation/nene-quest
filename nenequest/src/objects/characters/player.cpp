@@ -121,11 +121,15 @@ Player::~Player() { delete this->weapon; }
 Weapon *Player::getWeapon() { return this->weapon; }
 
 void Player::attack() {
-    if (is_attacking) return;
+    if (is_attacking || is_shooting) return;
 
-    this->is_attacking = true;
-    currentAttackTime = attackTime;
-    update_animation();
+    if(weapon->getWeaponType() == Bow){
+        fireArrow();
+    } else {
+        this->is_attacking = true;
+        currentAttackTime = attackTime;
+        update_animation();
+    }
 }
 
 void Player::equip(Weapon *w) {

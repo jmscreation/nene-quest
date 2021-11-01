@@ -2,7 +2,7 @@
 
 using namespace sf;
 
-BonusHp::BonusHp(BonusHpType bonusType, Vector2f position) {
+BonusHp::BonusHp(BonusHpType bonusType, Vector2f position, int strength) {
     sf::RectangleShape *zhitbox = new sf::RectangleShape();
     sf::RectangleShape *hitbox = new sf::RectangleShape();
 
@@ -29,7 +29,7 @@ BonusHp::BonusHp(BonusHpType bonusType, Vector2f position) {
                              sprite.getGlobalBounds().height * 0.3);
             updateAutoSpritePosition();
 
-            healed_amount = ONIGIRI_HEALED_AMOUNT;
+            healed_amount = strength == -1 ? ONIGIRI_HEALED_AMOUNT : strength;
             break;
         default:
             break;

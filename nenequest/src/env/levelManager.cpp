@@ -60,9 +60,14 @@ void LevelManager::spawnChest(int x, int y, std::string item, int hp) {
 }
 
 void LevelManager::spawnWeapon(int x, int y, std::string type) {
-    WeaponType t = parse(type);
-    Entity *e = new Weapon(t);
-    e->setPosition(x, y);
+    Entity *e = new ItemWeapon(parse(type), Vector2f(x, y));
+
+    game->addInstance(e);
+}
+
+void LevelManager::spawnOnigiri(int x, int y, int strength) {
+    Entity *e = new BonusHp(BONUS_ONIGIRI, Vector2f(x, y), strength);
+
     game->addInstance(e);
 }
 

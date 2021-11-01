@@ -67,5 +67,6 @@ WeaponType parse(std::string s) {
     if (s == "GreatSword") return GreatSword;
 
     // TODO: Add proper invalid value
+    std::cout << "Invalid weapon type: " << s << "\n";
     return Sword;
 }

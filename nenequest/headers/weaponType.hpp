@@ -1,6 +1,7 @@
 #ifndef WEAPONTYPE_HPP_INCLUDED
 #define WEAPONTYPE_HPP_INCLUDED
 
+#include <iostream>
 #include <string>
 
 #include <SFML/Graphics.hpp>

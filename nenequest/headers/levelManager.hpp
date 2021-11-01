@@ -32,6 +32,7 @@ class LevelManager {
     void startLevel(int playerCount);
     void spawnChest(int x, int y, std::string item, int hp);
     void spawnWeapon(int x, int y, std::string type);
+    void spawnOnigiri(int x, int y, int strength);
 
     static bool pccomp(ParserCommand *a, ParserCommand *b);
 };

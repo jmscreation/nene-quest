@@ -1,3 +1,7 @@
 0:start[playerCount=2]
 0:scroll[speed=3]
-0:weapon[x=700,y=750,item=Bow]
+0:weapon[x=500,y=750,item=Bow]
+0:weapon[x=900,y=350,item=Sword]
+0:health[x=800,y=820,strength=50]
+0:health[x=1690,y=810,strength=50]
+0:health[randx_min=32,randx_max=900,randy_min=300,randy_max=1000,strength=50]

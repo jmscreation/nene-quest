@@ -13,7 +13,7 @@
 class Player : public Entity {
    public:
     Player(Weapon *weapon, sf::Vector2f position, bool secondPlayer = false);
-    ~Player();
+    virtual ~Player();
 
     // Weapon
     Weapon *getWeapon();

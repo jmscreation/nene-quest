@@ -5,6 +5,7 @@
 #include "commands/cmdScroll.hpp"
 #include "commands/cmdStart.hpp"
 #include "commands/cmdWeapon.hpp"
+#include "commands/cmdHealth.hpp"
 #include "parserCommand.hpp"
 
 LevelParser::LevelParser() {}
@@ -15,6 +16,7 @@ void LevelParser::initialize() {
     this->addFunction(new cmdChest());
     this->addFunction(new cmdBridge());
     this->addFunction(new cmdWeapon());
+    this->addFunction(new cmdHealth());
 
     for (auto f : this->functions) f->initialize(this->manager);
 }
